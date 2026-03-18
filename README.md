@@ -1,6 +1,6 @@
 # MacCleaner
 
-A transparent, open-source Mac cleaning utility written in pure Python (tkinter).
+A transparent, open-source Mac cleaning utility written in pure Python (tkinter). I didn't package it so you can run it using your own environment. 
 Inspired by [AppCleaner](https://freemacsoft.net/appcleaner/), [OnyX](https://www.titanium-software.fr/en/onyx.html), and [Mole](https://github.com/tw93/Mole).
 
 **Every deletion moves files to the macOS Trash — nothing is permanent.**
