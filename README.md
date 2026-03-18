@@ -8,7 +8,7 @@ The full list of files is always shown before anything is removed.
 
 ---
 <img width="1080" height="720" alt="Mac Cleaner" src="https://github.com/user-attachments/assets/5514b371-ddc1-4a5f-9251-f7e124f370c1" />
----
+
 
 ## Features
 
