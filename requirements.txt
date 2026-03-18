@@ -1,0 +1,32 @@
+# MacCleaner — Python dependencies
+#
+# The app uses only the Python standard library.
+# No pip packages are required.
+#
+# Runtime requirements
+# ────────────────────
+# Python  ≥ 3.9  with tkinter built in
+#
+#   • macOS ships /usr/bin/python3 (3.9) with tkinter — works out of the box.
+#   • Homebrew python@3.11/3.12/3.13 include tkinter automatically.
+#   • Homebrew python@3.14 does NOT include tkinter; install the separate formula:
+#       brew install python-tk@3.14
+#
+# macOS version
+# ─────────────
+# Tested on macOS 13 Ventura and later.
+# Requires macOS (uses osascript / Finder for Trash, and Apple-specific
+# Library directory layout).
+#
+# Standard-library modules used
+# ──────────────────────────────
+# tkinter         GUI framework
+# ttk             Themed tkinter widgets
+# os              Path operations, directory listing
+# re              Regular-expression matching (bundle ID detection)
+# plistlib        Parsing Info.plist files inside .app bundles
+# subprocess      Running `du` (disk usage) and `osascript` (Trash)
+# threading       Background scanning so the UI stays responsive
+# pathlib         Cross-platform home-directory resolution
+# dataclasses     AppInfo data class
+# typing          Type annotations
