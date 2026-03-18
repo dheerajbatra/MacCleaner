@@ -25,7 +25,7 @@ LIBRARY_SEARCH_PATHS: List[Tuple[str, str, bool]] = [
     ("~/Library/WebKit",                 "WebKit Data",               False),
     ("~/Library/HTTPStorages",           "HTTP Storages",             False),
     ("~/Library/Cookies",                "Cookies",                   False),
-    # ── Home directory dotfiles (.opencode, .cursor, .config/…, etc.) ── #
+    # ── Home directory dotfiles (.cursor, .config/…, etc.) ── #
     ("~",                                "Home Dotfiles (~/.name)",   True),
     ("~/.config",                        "Config (~/.config)",        False),
     ("~/.local/share",                   "Local Data (~/.local/share)", False),
