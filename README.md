@@ -20,7 +20,7 @@ The full list of files is always shown before anything is removed.
 ### How app scanning works
 
 1. Every `.app` in `/Applications` (and `~/Applications`) is parsed for its `CFBundleIdentifier` via `Contents/Info.plist`.
-2. For a selected app, MacCleaner searches these locations for any entry whose name contains the bundle ID or app name:
+2. For a selected app, MacCleaner uses **precise matching** (bundle-ID prefix match or app-name exact match — no loose substring search) to find related files across these locations:
 
 ```
 ~/Library/Preferences              ~/Library/Application Support
@@ -30,6 +30,10 @@ The full list of files is always shown before anything is removed.
 ~/Library/WebKit                   ~/Library/HTTPStorages
 ~/Library/Cookies
 
+~                  (home dotfiles: ~/.appname, ~/.config/appname, etc.)
+~/.config          (XDG config directory)
+~/.local/share     (XDG data directory)
+
 /Library/Preferences               /Library/Application Support
 /Library/Caches                    /Library/LaunchAgents
 /Library/LaunchDaemons             /Library/PrivilegedHelperTools
@@ -37,6 +41,7 @@ The full list of files is always shown before anything is removed.
 
 3. Results are displayed in a grouped tree with file sizes **before** any action is taken.
 4. You can delete all found files or select individual rows.
+5. The `.app` bundle itself is always shown — you can uninstall the app even if no leftover files are found.
 
 ---
 
@@ -83,7 +88,9 @@ MacCleaner/
 ├── cleaner.py       # Moves files to Trash via osascript (safe, reversible)
 ├── utils.py         # format_size(), get_file_size()
 ├── launch.sh        # Launcher — auto-selects a Python that has tkinter
-└── requirements.txt # No pip deps; documents stdlib modules and Python version needs
+├── requirements.txt # No pip deps; documents stdlib modules and Python version needs
+├── .gitignore
+└── README.md
 ```
 
 ---
@@ -93,7 +100,7 @@ MacCleaner/
 | Concern | How it's handled |
 |---|---|
 | Accidental permanent deletion | Every removal calls `osascript` → Finder → Trash. Nothing bypasses Trash. |
-| Showing files before deleting | The file tree is always populated first. Delete buttons are disabled until a scan completes. |
+| Showing files before deleting | The file tree is always populated first. Delete buttons are enabled only after a scan completes and you have reviewed the list. |
 | Apple system files | The orphan finder skips all `com.apple.*` entries to avoid flagging macOS internals. |
 | Files needing admin rights | `/Library` items may fail silently if you're not an admin; the results dialog reports any failures. |
 | False-positive orphans | The orphan finder only flags entries whose name matches a bundle-ID pattern AND has no corresponding installed app. Review carefully before deleting. |

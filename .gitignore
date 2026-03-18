@@ -1,6 +1,30 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
-.DS_Store
+*.pyd
 *.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual envs
+venv/
+.venv/
+env/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / tooling
 .env
+.claude/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
